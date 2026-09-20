@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./App.css";
 import TodoItem from "./components/TodoItem";
 import NewTodoItem from "./components/NewTodoItem";
@@ -7,7 +7,15 @@ import useDarkMode from "./hooks/useDarkMode";
 import { Sun, Moon } from "lucide-react";
 
 function App() {
-    const [tasks, setTasks] = useState<Task[]>([]);
+    const [tasks, setTasks] = useState<Task[]>(() => {
+        try {
+            const savedTasks = localStorage.getItem("jot-tasks");
+            return savedTasks ? JSON.parse(savedTasks) : [];
+        } catch (error) {
+            console.error("Error loading tasks from localStorage:", error);
+            return [];
+        }
+    });
     const { isDarkMode, toggleDarkMode } = useDarkMode();
 
     const onToggleTask = (taskId: string) => {
@@ -17,6 +25,10 @@ function App() {
             ),
         );
     };
+
+    useEffect(() => {
+        localStorage.setItem("jot-tasks", JSON.stringify(tasks));
+    }, [tasks]);
 
     return (
         <>
