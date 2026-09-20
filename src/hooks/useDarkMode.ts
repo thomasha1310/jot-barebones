@@ -9,7 +9,7 @@ export default function useDarkMode() {
 
     useEffect(() => {
         document.documentElement.classList.toggle("dark", isDarkMode);
-        localStorage.setItem("theme", isDarkMode ? "dark" : "light");
+        localStorage.setItem("jot-theme", isDarkMode ? "dark" : "light");
     }, [isDarkMode]);
 
     return { isDarkMode, toggleDarkMode: () => setIsDarkMode((prev) => !prev) };
