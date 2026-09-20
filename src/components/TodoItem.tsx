@@ -8,7 +8,7 @@ export default function TodoItem(props: {
     return (
         <li>
             <button
-                className={`flex m-5 px-2 cursor-pointer ${props.completed ? "text-gray-400 dark:text-gray-600" : "text-gray-800 dark:text-gray-300"} transition-colors`}
+                className={`flex m-5 px-2 cursor-pointer ${props.completed ? "text-gray-400 dark:text-gray-500" : "text-gray-800 dark:text-gray-200"} transition-colors`}
                 onClick={props.onToggle}
             >
                 <span className="mr-4 mt-1">
