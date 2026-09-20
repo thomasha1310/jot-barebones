@@ -1,5 +1,7 @@
 # jot.
 
+**_barebones._**
+
 A lightweight to-do list built with React.
 
 ## Overview
