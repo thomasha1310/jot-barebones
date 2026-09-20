@@ -11,7 +11,7 @@ export default function NewTodoItem(props: {
     return (
         <li>
             <div
-                className={`flex m-5 px-2 ${newTaskText ? "text-gray-800" : "text-gray-400"} transition-colors`}
+                className={`flex m-5 px-2 ${newTaskText ? "text-gray-800 dark:text-gray-200" : "text-gray-400 dark:text-gray-500"} transition-colors`}
             >
                 <span className="mr-4 mt-1">
                     <Square />

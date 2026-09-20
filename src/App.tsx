@@ -3,9 +3,12 @@ import "./App.css";
 import TodoItem from "./components/TodoItem";
 import NewTodoItem from "./components/NewTodoItem";
 import type { Task } from "./types";
+import useDarkMode from "./hooks/useDarkMode";
+import { Sun, Moon } from "lucide-react";
 
 function App() {
     const [tasks, setTasks] = useState<Task[]>([]);
+    const { isDarkMode, toggleDarkMode } = useDarkMode();
 
     const onToggleTask = (taskId: string) => {
         setTasks(
@@ -19,9 +22,19 @@ function App() {
         <>
             <section
                 id="main"
-                className="flex flex-col items-center min-h-screen bg-white"
+                className="flex flex-col items-center min-h-screen bg-white dark:bg-gray-900 transition-colors"
             >
-                <h1 className="gaegu-regular text-6xl text-gray-800 my-8">
+                <button
+                    onClick={toggleDarkMode}
+                    className="absolute top-4 right-4 p-2 rounded-full transition-colors hover:bg-gray-200 dark:hover:bg-gray-700"
+                >
+                    {isDarkMode ? (
+                        <Sun className="text-yellow-500" />
+                    ) : (
+                        <Moon className="text-gray-800" />
+                    )}
+                </button>
+                <h1 className="gaegu-regular text-6xl text-gray-800 dark:text-gray-100 my-8">
                     jot.
                 </h1>
                 <ul className="w-full max-w-lg">
@@ -40,7 +53,7 @@ function App() {
                         onClick={() => {
                             setTasks(tasks.filter((task) => !task.completed));
                         }}
-                        className="gaegu-regular text-left transition-colors mr-auto text-gray-600 cursor-pointer hover:text-gray-400"
+                        className="gaegu-regular text-left transition-colors mr-auto text-gray-600 dark:text-gray-300 cursor-pointer hover:text-gray-400 dark:hover:text-gray-400"
                     >
                         clear completed tasks
                     </button>
