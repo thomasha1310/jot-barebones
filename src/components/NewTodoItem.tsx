@@ -19,7 +19,7 @@ export default function NewTodoItem(props: {
                 <input
                     type="text"
                     placeholder="Add a new task..."
-                    className="gaegu-regular text-2xl text-left focus:outline-none"
+                    className="gaegu-regular text-2xl text-left focus:outline-none field-sizing-fixed"
                     value={newTaskText}
                     onChange={(e) => setNewTaskText(e.target.value)}
                     onKeyDown={(e) => {
